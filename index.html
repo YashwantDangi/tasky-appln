@@ -23,7 +23,71 @@
     />
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+
+    <!-- Modal for UI Display on Home pg -->
+    <div class="modal fade" id="showTask" tabindex="-1" aria-labelledby="showTaskLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content" >
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="showTaskLabel">Modal title</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body task__modal__body">
+            <!-- <p> js text </p> -->
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Button on smaller screen -->
+    <div class="add__new__btn__mobile__only d-md-none">
+      <button class="btn btn-primary d-flex align-items-center gap-2" type="button" data-bs-toggle="modal" data-bs-target="#addNewModal">
+        <i class="fas fa-plus"></i>
+        Add an item
+      </button>
+    </div>
+
+    <!-- Modal when I click on add a new item -->
+    <div class="modal fade" id="addNewModal" tabindex="-1" aria-labelledby="addNewModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="addNewModalLabel">Modal title</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label for="imageUrl" class="form-label">Image Url</label>
+                <input type="url" class="form-control" id="imageUrl" placeholder="https://example.com/rohan">
+              </div>
+              <div class="mb-3">
+                <label for="taskTitle" class="form-label">Task Title</label>
+                <input type="text" class="form-control" id="taskTitle" placeholder="Enter ur task title here.." required>
+              </div>
+              <div class="mb-3">
+                <label for="taskType" class="form-label">Task Type</label>
+                <input type="text" class="form-control" id="taskType" placeholder="Enter ur task type here.." required>
+              </div>
+              <div class="mb-3">
+                <label for="taskDescription" class="form-label">Task Description</label>
+                <textarea class="form-control" id="taskDescription" placeholder="Enter your task description here" required rows="4"></textarea>
+              </div>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Save changes</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-md bg-body-tertiary">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">Tasky</a>
         <button
@@ -44,10 +108,7 @@
             </li>
           </ul>
           <form class="d-flex" role="search">
-            <button
-              class="btn btn-primary d-flex align-items-center gap-2"
-              type="submit"
-            >
+            <button class="btn btn-primary d-flex align-items-center gap-2" type="button" data-bs-toggle="modal" data-bs-target="#addNewModal">
               <i class="fas fa-plus"></i>
               Add an item
             </button>
@@ -56,12 +117,13 @@
       </div>
     </nav>
 
+    <!-- Section Body -->
     <div class="container">
       <!-- Content here -->
       <section class="mt-4">
         <div class="row justify-content-center">
           <div class="col-md-6">
-            <div class="input-group flex-nowrap shadow-lg">
+            <div class="input-group flex-nowrap shadow-lg rounded">
               <input
                 type="text"
                 class="form-control"
@@ -76,8 +138,15 @@
           </div>
         </div>
       </section>
+
+      <section class="mt-4">
+        <div class="row task__container">
+          <h1>This is the place where we will get all the cards</h1>
+        </div>
+      </section>
     </div>
 
+    <!-- Javascript part -->
     <script type="text/javascript" src="./scripts/index.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
